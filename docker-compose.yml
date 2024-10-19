@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: laravel_api
+    restart: always
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: laravel_api
+      MYSQL_USER: usr_laravel_api
+      MYSQL_PASSWORD: userLaravelApi
+      MYSQL_ROOT_PASSWORD: laravel_api123456789*
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+      tty: true
+    ports:
+      - "3306:3306"
+    networks:
+        - app-network
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+    db_data:
+
+networks:
+    app-network:
+        driver: bridge
